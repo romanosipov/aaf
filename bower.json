@@ -1,0 +1,21 @@
+{
+  "name": "aaf",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "(Roman Osipov <romanosipov@gmail.com>)"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "^3.3.7"
+  }
+}
