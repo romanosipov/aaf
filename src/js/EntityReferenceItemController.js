@@ -1,55 +1,47 @@
 angular.module('aaf')
-  .controller('EntityReferenceListController', ['$scope', '$log', 'reference', '$location', function($scope, $log, reference, $location) {
-    $log.log('EntityReferenceListController');
-    $scope.items = [];
+  .controller('EntityReferenceItemController', ['$location', '$log', 'reference', '$scope', '$routeParams', function($location, $log, reference, $scope, $routeParams) {
+    $log.log('EntityReferenceItemController');
 
-    var init = function() {
-      $log.log('EntityReferenceListController.init()');
+    $log.log('$routeParams: %o', $routeParams);
 
-      reference.find()
+    $scope.item = {};
+
+    if ($routeParams.itemId) {
+      reference.get($routeParams.itemId)
+      .then(function(item) {
+        $scope.item = item;
+      });
+    }
+
+    $scope.storeItem = function() {
+      $log.log('EntityReferenceItemController.store()');
+      $log.debug('$scope.item = %o', $scope.item);
+
+      reference.store($scope.item)
       .then(function(result) {
         $log.debug("result = %o", result);
-        $scope.items = result.docs;
+        $scope.close();
       })
       .catch(function(err) {
         $log.error(err);
       });
     };
 
-    init();
+    $scope.removeItem = function() {
+      $log.log('EntityReferenceItemController.removeItem()');
+      $log.debug('$scope.item: %o', $scope.item);
 
-    $scope.editItem = function(item) {
-      $location.path('/' + reference.getItemType() + '/item/' + item._id);
+      reference.remove($scope.item)
+      .then(function(result) {
+        $scope.close();
+      })
+      .catch(function(err) {
+        $log.error(err);
+      });
     };
 
-    $scope.selectAll = false;
-    $scope.selected = [];
-
-    $scope.toggle = function() {
-      for (var n in $scope.items) {
-        $scope.selected[n] = $scope.selectAll;
-      }
+    $scope.close = function() {
+      $location.path("/" + reference.getItemType());
     };
 
-    $scope.removeItems = function() {
-      $log.log("EntityReferenceListController.removeItems()");
-
-      var itemsToRemove = [];
-      for (var n in $scope.selected) {
-        itemsToRemove.push($scope.items[n]._id);
-      }
-
-      if (itemsToRemove.length > 0) {
-        reference.remove(itemsToRemove)
-        .then(function(result) {
-          $scope.selectAll = false;
-          $scope.selected.length = 0;
-          init();
-        })
-        .catch(function(err) {
-          $log.error(err);
-        });
-
-      }
-    };
   }]);
