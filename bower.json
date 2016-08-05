@@ -16,6 +16,12 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap-sass": "^3.3.7"
+    "jquery": "^3.1.0",
+    "bootstrap-sass": "^3.3.7",
+    "angular": "angularjs#^1.5.8",
+    "pouchdb": "^5.4.5",
+    "angular-pouchdb": "^4.3.0",
+    "livereload-js": "livereload#^2.2.1",
+    "angular-route": "^1.5.8"
   }
 }
