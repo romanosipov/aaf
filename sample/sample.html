@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html ng-app="sampleApp" ng-csp>
+<head>
+  <title>Пример использования AAF</title>
+  <meta charset="UTF-8">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Пример использования AAF</h1>
+
+    <div ng-view></div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <script src="js/angular.min.js"></script>
+  <script src="js/angular-route.min.js"></script>
+
+  <script src="js/pouchdb.min.js"></script>
+  <script src="js/pouchdb.find.min.js"></script>
+  <script src="js/angular-pouchdb.min.js"></script>
+
+  <script src="../aaf-min.js"></script>
+
+  <script src="sample.js"></script>
+
+  <script type="text/ng-template" src="./partials/animal-list.html"></script>
+</body>
+</html>

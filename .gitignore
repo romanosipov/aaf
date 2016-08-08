@@ -2,3 +2,4 @@ bower_components/*
 node_modules/*
 _dist/*
 .sass-cache/*
+npm-debug.log

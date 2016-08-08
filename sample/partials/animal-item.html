@@ -1,0 +1,12 @@
+<h1>Животное</h1>
+
+<div class="form-group">
+  <label for="animalName">Название</label>
+  <input ng-model="item.name" type="text" class="form-control" id="animalName" placeholder="Название животного">
+</div>
+
+<div>
+  <a ng-click="storeItem()" class="btn btn-default">Сохранить</a>
+  <a href="#/ref-animal" class="btn btn-default">Закрыть</a>
+  <a ng-click="removeItem()" class="btn btn-default">Удалить</a>
+</div>

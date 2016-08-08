@@ -1,0 +1,22 @@
+<h2>Животные</h2>
+
+<div class="btn-group">
+  <a href='#/ref-animal/item' class="btn btn-default">Добавить</a>
+  <a ng-click="removeItems()" class="btn btn-default">Удалить</a>
+</div>
+
+<table style="margin-top: 15px" class="table table-condensed table-hover table-striped table-bordered">
+  <thead>
+    <tr>
+      <th><input type="checkbox" ng-model="selectAll" ng-click="toggle()" /></th>
+      <th>Название</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr ng-repeat="item in items track by $index" ng-click="editItem(item)">
+      <td ng-click="$event.stopPropagation();"><input type="checkbox" ng-model="selected[$index]" /></td>
+      <td>{{item.name}}</td>
+    </tr>
+  </tbody>
+</table>
