@@ -64,6 +64,47 @@ module.exports = function(grunt) {
       'fonts-release': {
         files: [{expand: true, cwd: 'bower_components/bootstrap-sass/assets/fonts/bootstrap/', src: '**', dest: 'dist/css/fonts/'}],
       },
+
+      'sample': {
+        files: [
+          {
+            expand: true,
+            cwd: 'sample',
+            src: '**',
+            dest: 'dist/sample',
+          },
+          {
+            expand: true,
+            cwd: 'bower_components/angular',
+            src: 'angular.min.js',
+            dest: 'dist/sample/js',
+          },
+          {
+            expand: true,
+            cwd: 'bower_components/angular-route',
+            src: 'angular-route.min.js',
+            dest: 'dist/sample/js',
+          },
+          {
+            expand: true,
+            cwd: 'bower_components/pouchdb/dist',
+            src: 'pouchdb.min.js',
+            dest: 'dist/sample/js',
+          },
+          {
+            expand: true,
+            cwd: 'bower_components/pouchdb-find/dist',
+            src: 'pouchdb.find.min.js',
+            dest: 'dist/sample/js',
+          },
+          {
+            expand: true,
+            cwd: 'bower_components/angular-pouchdb',
+            src: 'angular-pouchdb.min.js',
+            dest: 'dist/sample/js',
+          },
+        ],
+      },
     },
 
     'concat': {
@@ -84,7 +125,7 @@ module.exports = function(grunt) {
 
     'http-server': {
       debug: {
-        root: '_dist/debug',
+        root: 'dist',
         port: 8282,
         openBrowser: false,
       },
@@ -117,7 +158,7 @@ module.exports = function(grunt) {
           sourceMap: true,
         },
         files: {
-          'dist/js/aaf-min.js': [
+          'dist/aaf-min.js': [
             'src/js/**/*.js',
           ],
         }
@@ -132,7 +173,7 @@ module.exports = function(grunt) {
         commitMessage: 'Release v%VERSION%',
         commitFiles: ['-a'],
         createTag: true,
-        tagName: 'v%VERSION%',
+        tagName: '%VERSION%',
         tagMessage: 'Version %VERSION%',
         push: true,
         pushTo: 'origin',
@@ -142,8 +183,9 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('build:debug',     ['clean:debug', 'sass:debug', 'copy:html', 'copy:fonts', 'concat:js']);
-  grunt.registerTask('build:release',   ['clean:release', 'sass:release', 'copy:html-release', 'copy:fonts-release', 'uglify']);
-  grunt.registerTask('package:release', ['clean:release', 'sass:release', 'copy:html-release', 'copy:fonts-release', 'uglify', 'bump']);
+  grunt.registerTask('build:release',   ['clean:release', 'uglify', 'build:sample']);
+  grunt.registerTask('package:release', ['clean:release', 'uglify', 'build:sample', 'bump']);
+  grunt.registerTask('build:sample', ['copy:sample']);
 
   grunt.registerTask('default', ['build:debug']);
 

@@ -22,6 +22,7 @@
     "pouchdb": "^5.4.5",
     "angular-pouchdb": "^4.3.0",
     "livereload-js": "livereload#^2.2.1",
-    "angular-route": "^1.5.8"
+    "angular-route": "^1.5.8",
+    "pouchdb-find": "^0.10.3"
   }
 }

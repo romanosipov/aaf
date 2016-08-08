@@ -6,7 +6,7 @@ angular.module('aaf')
       dbName = value;
     };
 
-    this.$get = ['pouchDB', '$log', '$q', 'dbName', function(pouchdb, $log, $q, dbName) {
+    this.$get = ['pouchDB', '$log', '$q', function entityReferenceFactory(pouchdb, $log, $q) {
       var db = pouchdb(dbName);
 
       var get = function(itemId) {
